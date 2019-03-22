@@ -1,5 +1,5 @@
 <h1>100 Spider items</h1>
-<p>python3 100爬虫实例 (包含scrapy,pyspider，以及一些web框架实例)，用100个爬虫实例巩固所学</p>
+<p>python3 100reptileProjects (包含scrapy,pyspider，以及一些web框架实例)，用100个爬虫实例巩固所学</p>
 <p>需要修改更正的，会尽快审核发布</p>
 <br />
 <br />
