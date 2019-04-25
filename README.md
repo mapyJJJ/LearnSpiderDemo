@@ -1,6 +1,6 @@
 <h1>100 spider Projects</h1>
 <p>python3 100spiderProjects (包含scrapy,pyspider，以及一些web框架实例)，用100个爬虫实例巩固所学</p>
-<p>需要修改更正的，会尽快审核发布</p>
+
 <br />
 <br />
 <a class="js-navigation-open" title="baidu_pic" id="7f9edb0ecc4b7825038ce24a78db8f4d-b25dfe414955f87c9d44679b9f04bba8eb6b2220" href="https://github.com/mapyJJJ/100-/tree/master/baidu_pic">1,baidu_pic  百度图片爬虫（根据关键字下载图片)</a>
