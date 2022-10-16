@@ -24,3 +24,6 @@
 <a class="js-navigation-open" title="斗图啦爬虫" id="b98a185f6675d499d62248c4d9b28478-40ae993532af696ffdf869f336a0570ec0ae8c66" href="https://github.com/mapyJJJ/doutula/tree/master/spider_doutula">10,斗图啦爬虫</a>
 <br />
 <a class="js-navigation-open" title="sina分布式爬虫" id="b98a185f6675d499d62248c4d9b28478-40ae993532af696ffdf869f336a0570ec0ae8c66" href="https://github.com/mapyJJJ/Sina_distributed_crawle-">10,sina分布式爬虫</a>
+<br />
+
+[b站视频下载工具](https://github.com/mapyJJJ/LearnSpiderDemo/blob/master/bilibili_video_download_cli.py)
