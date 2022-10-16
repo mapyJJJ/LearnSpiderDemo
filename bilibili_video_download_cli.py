@@ -12,6 +12,8 @@
 # 需要将cookie写入mycookie.txt中，如果不指定cookie，一般只能下载360p
 # urls.txt 中，每个链接地址占用一行
 
+import hashlib
+import os
 import argparse
 import random
 import re
@@ -142,16 +144,27 @@ def parse_player_info_get_video_urls(info_api: str, qn: int) -> Tuple[List[str],
 
 
 def download_video(
+    page_url: str,
     urls: List[str],
     file_size: int,
     title: str,
     _type: Literal["flv", "mp4"],
     outputdir: str = ".",
 ):
-    filename = f"{title}.{_type}"
-    file_path = f"{outputdir if outputdir.endswith('/') else outputdir + '/'}{filename}"
-
+    
     def _do(url):
+        # 视频名称和path做一个摘要，防止重复下载，即便名字相同 page_uri 也不同
+        md5 = hashlib.md5()
+        mixed_path_title = page_url.partition("?")[0] + title
+        print(mixed_path_title)
+        md5.update(mixed_path_title.encode("utf-8"))
+        hash_str = md5.hexdigest()
+
+        filename = f"{title}_{hash_str}.{_type}"
+        file_path = f"{outputdir if outputdir.endswith('/') else outputdir + '/'}{filename}"
+        if os.path.exists(file_path):
+            rich.print(f'[yellow]视频{title},已经存在,如需覆盖请先手动删除原视频后重试')
+            return
         f = open(file_path, "wb")
         try:
             stream_file = requests.get(
@@ -176,7 +189,7 @@ def download_video(
             ) as progress:
                 task = progress.add_task(
                     "download",
-                    filename=f"{title}.{_type}",
+                    filename=filename,
                     total=file_size,  # filename仅作名称展示
                 )
 
@@ -272,4 +285,4 @@ if __name__ == "__main__":
         avid, cid, title = parse_page(url)
         info_api = gen_player_info_api(avid, cid, qn=args.qn, _type=args.type)
         player_urls, file_size = parse_player_info_get_video_urls(info_api, args.qn)
-        download_video(player_urls, file_size, title, args.type, args.outputdir)
+        download_video(url, player_urls, file_size, title, args.type, args.outputdir)
