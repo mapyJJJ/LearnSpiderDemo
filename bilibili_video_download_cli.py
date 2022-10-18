@@ -37,6 +37,7 @@ class Config:
             self.cookie = open(cookie_file).read()
         else:
             self.cookie = ""
+        self.cookie = self.cookie.strip()
 
         # request timeout
         self.timeout = 10
